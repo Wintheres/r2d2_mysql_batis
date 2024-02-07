@@ -1,5 +1,5 @@
 [package]
-name = "macros"
+name = "r2d2_mysql_batis_macros"
 version = "0.1.0"
 edition = "2021"
 description = "r2d2_mysql_batis_macros"
