@@ -10,9 +10,9 @@ pub mod mysql {
         let builder = OptsBuilder::new()
             .ip_or_hostname(Some("127.0.0.1"))
             .tcp_port(3306)
-            .user(Some("root"))
-            .pass(Some("NewLife.989"))
-            .db_name(Some("bootdo"));
+            .user(Some("user"))
+            .pass(Some("password"))
+            .db_name(Some("db_name"));
         let manager = MySqlConnectionManager::new(builder);
         r2d2::Pool::builder().max_size(5).build(manager).unwrap()
     });
