@@ -1,6 +1,6 @@
 [package]
 name = "r2d2_mysql_batis"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "r2d2_mysql_batis"
 license = "MIT"
@@ -10,3 +10,4 @@ r2d2_mysql_batis_macros = "0.1.0"
 tokio = { version = "1.35.1", features = ["full"] }
 once_cell = "1.19.0"
 r2d2_mysql = "24.0.0"
+yaml-rust = "0.4"

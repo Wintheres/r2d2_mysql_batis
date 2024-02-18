@@ -1,0 +1,2 @@
+[package.publish]
+exclude = ["./src/test"]
