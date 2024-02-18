@@ -21,7 +21,7 @@ pub mod mysql {
             .tcp_port(doc["port"].as_i64().unwrap() as u16)
             .user(Some(doc["user"].as_str().unwrap()))
             .pass(Some(doc["password"].as_str().unwrap()))
-            .db_name(Some(doc["db_name"].as_str().unwrap()));
+            .db_name(Some(doc["db-name"].as_str().unwrap()));
         let manager = MySqlConnectionManager::new(builder);
         r2d2::Pool::builder().max_size(5).build(manager).unwrap()
     });
