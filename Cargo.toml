@@ -4,6 +4,8 @@ version = "0.1.4"
 edition = "2021"
 description = "r2d2_mysql_batis"
 license = "MIT"
+authors = ["Wintheres <793981522@qq.com>"]
+repository = "https://github.com/Wintheres/r2d2_mysql_batis"
 
 [dependencies]
 r2d2_mysql_batis_macros = "0.1.0"
