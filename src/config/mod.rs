@@ -26,6 +26,7 @@ pub mod mysql {
         r2d2::Pool::builder().max_size(5).build(manager).unwrap()
     });
 
+    /// 获取数据库连接对象
     pub async fn get_coon() -> Result<PooledConnection<MySqlConnectionManager>, Box<dyn Error + Send + Sync>> {
         task::spawn_blocking(move || {
             Ok(POOL.clone().get()?)

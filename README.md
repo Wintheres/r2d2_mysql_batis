@@ -19,6 +19,7 @@ db-name: test
 需要添加一个`entity_option_mapping`的属性宏，该宏接收两个属性参数， 第一个是表名，第二个是主键名。
 所有字段必须使用Option类型，且泛型的类型是基本类型或String。
 ```
+use r2d2_mysql::mysql::params;
 use r2d2_mysql_batis::macros::entity_option_mapping;
 use serde::Serialize;
 
@@ -55,6 +56,10 @@ use r2d2_mysql_batis::service::Service;
 
 #[tokio::test]
 async fn tokio_test() {
+        // 查询所有列表数据
+        let list = SysUser::list().await.unwrap();
+        
+        // 根据主键查询单条数据
         let mut user = SysUser::find_by_id(1).await.unwrap().unwrap();
         println!("{user:?}");
 
@@ -75,15 +80,21 @@ async fn tokio_test() {
         let primary_key = SysUser::primary_key();
         println!("{primary_key}");
 
-        // 获取插入SQL语句 返回类型为&str
+        // 获取插入JPA SQL语句 返回类型为&str
         let insert_sql = SysUser::insert_sql();
         println!("{insert_sql}");
 
-        // 获取根据主键更新SQL语句（更新字段不包含None值）返回类型为String
+        // 获取根据主键更新JPA SQL语句（更新字段不包含None值）返回类型为String
         let update_by_id_sql = user.update_by_id_sql();
         println!("{update_by_id_sql}");
 
-        //设置主键值（数据库不更新）
+        // 设置主键值（数据库不更新）
         user.set_primary_key(1);
+        
+        // 自定义SQL查询
+        let query_list = SysUser::query(String.from("SELECT * FROM `sys_user`")).await.unwrap();
+        
+        // 自定义JPA SQL查询
+        let query_list = SysUser::jpa_query(String.from("SELECT * FROM `sys_user` WHERE `id` > :id"), params! {"id" => 0}).await.unwrap();
 }
 ```
