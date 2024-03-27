@@ -1,6 +1,6 @@
 [package]
 name = "r2d2_mysql_batis"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2021"
 description = "r2d2_mysql_batis"
 license = "MIT"
